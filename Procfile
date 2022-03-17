@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/.*[^-][^p][^l][^a][^i][^n].jar$
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs//.*[^-][^p][^l][^a][^i][^n]/.jar$
