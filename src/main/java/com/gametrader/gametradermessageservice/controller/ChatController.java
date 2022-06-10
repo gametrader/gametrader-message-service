@@ -23,9 +23,8 @@ public class ChatController {
     private final ChatService chatService;
 
     @PostMapping("/create")
-    public ResponseEntity<Void> createConversation(@RequestBody @NotNull ConversationDto dto) {
-        chatService.createConversation(dto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<ConversationDto> createConversation(@RequestBody @NotNull ConversationDto dto) {
+        return new ResponseEntity<>(chatService.createConversation(dto), HttpStatus.CREATED);
     }
 
     @GetMapping("/get/{id}")
@@ -35,6 +34,7 @@ public class ChatController {
 
     @MessageMapping("/chat/{conversationId}")
     public void sendMessage(@DestinationVariable Long conversationId, MessageDto dto) {
-
+        messagingTemplate.convertAndSend("/topic/messages/" + conversationId, dto);
+        chatService.updateConversation(dto, conversationId);
     }
 }

@@ -87,7 +87,11 @@ jacocoTestCoverageVerification {
             includes = ['com.gametrader.*']
             excludes = ['com.gametrader.gametradermessageservice.GametraderMessageServiceApplication',
                         'com.gametrader.gametradermessageservice.config.*',
-                        'com.gametrader.gametradermessageservice.controller.TestController'
+                        'com.gametrader.gametradermessageservice.controller.TestController',
+                        'com.gametrader.gametradermessageservice.dto.*',
+                        'com.gametrader.gametradermessageservice.entity.*',
+                        'com.gametrader.gametradermessageservice.mapper.*',
+                        'com.gametrader.gametradermessageservice.repository.*'
             ]
 
             limit {
