@@ -6,6 +6,26 @@ servers:
 - description: Generated server url
   url: http://localhost:8080
 paths:
+  /v1/message/create:
+    post:
+      operationId: createConversation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversationDto'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ConversationDto'
+          description: OK
+      tags:
+      - chat-controller
+      x-contentType: application/json
+      x-accepts: '*/*'
   /:
     get:
       operationId: test
@@ -19,6 +39,90 @@ paths:
       tags:
       - test-controller
       x-accepts: '*/*'
+  /v1/message/get/{id}:
+    get:
+      operationId: getConversationById
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ConversationDto'
+          description: OK
+      tags:
+      - chat-controller
+      x-accepts: '*/*'
 components:
-  schemas: {}
+  schemas:
+    ConversationDto:
+      example:
+        participantId: 5
+        postOwnerId: 1
+        id: 0
+        postId: 6
+        message:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          isDisplayed: true
+          id: 5
+          authorId: 2
+          content: content
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          isDisplayed: true
+          id: 5
+          authorId: 2
+          content: content
+      properties:
+        id:
+          format: int64
+          type: integer
+        postId:
+          format: int64
+          type: integer
+        postOwnerId:
+          format: int64
+          type: integer
+        participantId:
+          format: int64
+          type: integer
+        message:
+          items:
+            $ref: '#/components/schemas/MessageEntity'
+          type: array
+      required:
+      - id
+      - participantId
+      - postId
+      - postOwnerId
+      type: object
+    MessageEntity:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        isDisplayed: true
+        id: 5
+        authorId: 2
+        content: content
+      properties:
+        id:
+          format: int64
+          type: integer
+        authorId:
+          format: int64
+          type: integer
+        content:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        isDisplayed:
+          type: boolean
+      type: object
 
