@@ -5,6 +5,9 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
+docs/ChatControllerApi.md
+docs/ConversationDto.md
+docs/MessageEntity.md
 docs/TestControllerApi.md
 git_push.sh
 gradle.properties
@@ -15,6 +18,7 @@ gradlew.bat
 pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
+src/main/java/com/gametrader/api/ChatControllerApi.java
 src/main/java/com/gametrader/api/TestControllerApi.java
 src/main/java/com/gametrader/api/invoker/ApiClient.java
 src/main/java/com/gametrader/api/invoker/JavaTimeFormatter.java
@@ -25,4 +29,9 @@ src/main/java/com/gametrader/api/invoker/auth/ApiKeyAuth.java
 src/main/java/com/gametrader/api/invoker/auth/Authentication.java
 src/main/java/com/gametrader/api/invoker/auth/HttpBasicAuth.java
 src/main/java/com/gametrader/api/invoker/auth/HttpBearerAuth.java
+src/main/java/com/gametrader/api/model/ConversationDto.java
+src/main/java/com/gametrader/api/model/MessageEntity.java
+src/test/java/com/gametrader/api/ChatControllerApiTest.java
 src/test/java/com/gametrader/api/TestControllerApiTest.java
+src/test/java/com/gametrader/api/model/ConversationDtoTest.java
+src/test/java/com/gametrader/api/model/MessageEntityTest.java
